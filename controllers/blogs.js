@@ -1,28 +1,29 @@
-const blogsRouter = require('express').Router()
-const Blog = require('../models/blog')
+// eslint-disable-next-line new-cap
+const blogsRouter = require('express').Router();
+const Blog = require('../models/blog');
 
 blogsRouter.get('/', (request, response) => {
-    Blog.find({}).then(notes => {
-        response.json(notes)
-    })
-})
+  Blog.find({}).then((notes) => {
+    response.json(notes);
+  });
+});
 
 
 blogsRouter.post('/', (request, response, next) => {
-    const body = request.body
+  const body = request.body;
 
-    const note = new Blog({
-        title: body.title,
-        author: body.author,
-        url:body.url,
-        likes: body.likes
-    })
+  const note = new Blog({
+    title: body.title,
+    author: body.author,
+    url: body.url,
+    likes: body.likes,
+  });
 
-    note.save()
-        .then(savedNote => {
-            response.json(savedNote)
-        })
-        .catch(error => next(error))
-})
+  note.save()
+      .then((savedNote) => {
+        response.json(savedNote);
+      })
+      .catch((error) => next(error));
+});
 
-module.exports = blogsRouter
+module.exports = blogsRouter;

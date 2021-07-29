@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test" : "jest --verbose"
+    "test": "jest --verbose",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,8 @@
     "mongoose": "^5.13.3"
   },
   "devDependencies": {
+    "eslint": "^7.31.0",
+    "eslint-config-google": "^0.14.0",
     "jest": "^27.0.6",
     "nodemon": "^2.0.12"
   },

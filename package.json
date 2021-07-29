@@ -1,0 +1,30 @@
+{
+  "name": "fullstackopen-2021-part4-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byfsdhr/fullstackopen-2021-part4-blog.git"
+  },
+  "author": "yifan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/byfsdhr/fullstackopen-2021-part4-blog/issues"
+  },
+  "homepage": "https://github.com/byfsdhr/fullstackopen-2021-part4-blog#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

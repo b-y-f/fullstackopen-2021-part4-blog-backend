@@ -1,10 +1,10 @@
-POST http://localhost:3003/api/blogs
-Content-Type: application/json
+DELETE http://localhost:3003/api/blogs/6108f80e62cef70b9cb21461
+# Content-Type: application/json
 
-{
-    "title":"baababababababab",
-    "author":"bill",
-    "url":"www.google.com",
-    "likes":2
-}
+# {
+#     "title":"baababababababab",
+#     "author":"bill",
+#     "url":"www.google.com",
+#     "likes":2
+# }
 

@@ -84,6 +84,17 @@ test('test if title and url missing', async()=> {
 
 })
 
+test('test if successful deleted post',async()=>{
+    const res = await api.get('/api/blogs')
+    const targetId = res.body[0].id
+    await api
+        .delete(`/api/blogs/${targetId}`)
+        .expect(204)
+
+    const res2 = await api.get('/api/blogs')
+    expect(res2.body).toHaveLength(res.body.length - 1)
+})
+
 afterAll(() => {
     mongoose.connection.close()
 })

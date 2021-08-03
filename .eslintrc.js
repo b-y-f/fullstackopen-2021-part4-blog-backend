@@ -6,7 +6,7 @@ module.exports = {
     'jest': true,
   },
   'extends': [
-    'google',
+    'standard',
   ],
   'parserOptions': {
     'ecmaVersion': 12,

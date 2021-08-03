@@ -16,7 +16,7 @@ blogsRouter.post('/', (request, response, next) => {
     title: body.title,
     author: body.author,
     url: body.url,
-    likes: body.likes,
+    likes: body.like?body.like:0,
   });
 
   note.save()

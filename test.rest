@@ -2,9 +2,8 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-    "title":"baababababa3213213123babab",
+    "title":"baaba454545bababababab",
     "author":"bill",
-    "url":"www.google.com",
-    "likes":23
+    "url":"www.google.com"
 }
 

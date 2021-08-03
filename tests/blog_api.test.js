@@ -15,7 +15,7 @@ const initialBlogs = [
         title: 'HTML is hard',
         author: 'bill_bb',
         url: 'www.nvc.com',
-        likes: 22
+        likes:22
     },
   ]
   beforeEach(async () => {
@@ -64,7 +64,11 @@ test('check if can create new blog', async ()=>{
     expect(response.body).toHaveLength(initialBlogs.length + 1)
     })
 
-
+test('verify if like is missing', async ()=> {
+    const res = await api.get('/api/blogs')
+    const likes = res.body.filter(r => r.likes===0 || r.likes===undefined)
+    expect(likes).toHaveLength(0)
+})
 
 afterAll(() => {
     mongoose.connection.close()

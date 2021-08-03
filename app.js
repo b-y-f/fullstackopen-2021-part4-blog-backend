@@ -15,7 +15,7 @@ mongoose.connect(config.mongoUrl,
       useUnifiedTopology: true,
       useFindAndModify: false, useCreateIndex: true})
     .then(() => {
-      logger.info('connected to MongoDB');
+      logger.info('connected to MongoDB ' + config.mongoUrl);
     })
     .catch((error) => {
       logger.info('error connecting to MongoDB:', error.message);

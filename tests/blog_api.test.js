@@ -95,6 +95,24 @@ test('test if successful deleted post',async()=>{
     expect(res2.body).toHaveLength(res.body.length - 1)
 })
 
+test('test update blog post', async()=>{
+    const res = await api.get('/api/blogs')
+    const targetId = res.body[1].id
+    const update_info = {
+        title: 'Updated',
+        url: 'www.update.com',
+    }
+
+    await api
+        .put(`/api/blogs/${targetId}`)
+        .send(update_info)
+        .expect(200)
+
+    const res2 = await api.get('/api/blogs')
+    expect(res2.body[1].title).toContain('Updated')
+    expect(res2.body[1].url).toContain('www.update.com')
+})
+
 afterAll(() => {
     mongoose.connection.close()
 })

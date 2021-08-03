@@ -9,21 +9,23 @@ blogsRouter.get('/', (request, response) => {
 });
 
 
-blogsRouter.post('/', (request, response, next) => {
+blogsRouter.post('/', async(request, response, next) => {
   const body = request.body;
 
-  const note = new Blog({
+  if (!body.title || !body.url){
+    response.status(400).end()
+  }else{
+    const blog = new Blog({
     title: body.title,
     author: body.author,
     url: body.url,
     likes: body.like?body.like:0,
   });
 
-  note.save()
-      .then((savedNote) => {
-        response.json(savedNote);
-      })
-      .catch((error) => next(error));
+  const savedBlog = await blog.save()
+  response.json(savedBlog)
+  }
+
 });
 
 module.exports = blogsRouter;

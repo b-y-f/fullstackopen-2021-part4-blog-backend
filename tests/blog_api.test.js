@@ -70,6 +70,20 @@ test('verify if like is missing', async ()=> {
     expect(likes).toHaveLength(0)
 })
 
+test('test if title and url missing', async()=> {
+    const newTestBlog = {
+        url:"wwwwwww.bbb",
+        author:"bill",
+        likes:100
+    }
+
+    await api
+    .post('/api/blogs')
+    .send(newTestBlog)
+    .expect(400)
+
+})
+
 afterAll(() => {
     mongoose.connection.close()
 })

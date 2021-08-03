@@ -5,6 +5,8 @@ const middleware = require('./utils/middleware');
 const logger = require('./utils/logger');
 const mongoose = require('mongoose');
 const config = require('./utils/config');
+require('express-async-errors')
+
 
 app.use(cors());
 app.use(express.json());
@@ -15,7 +17,7 @@ mongoose.connect(config.mongoUrl,
       useUnifiedTopology: true,
       useFindAndModify: false, useCreateIndex: true})
     .then(() => {
-      logger.info('connected to MongoDB ' + config.mongoUrl);
+      logger.info('connected to MongoDB ');
     })
     .catch((error) => {
       logger.info('error connecting to MongoDB:', error.message);

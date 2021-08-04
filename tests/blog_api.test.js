@@ -3,21 +3,23 @@ const supertest = require('supertest')
 const app = require('../app')
 const api = supertest(app)
 const Blog = require('../models/blog')
+const helper = require('./test_helper')
 
-// TODO refactor tests
+// TODO 4.23*: bloglist expansion, step11
+// After adding token based authentication the tests for adding a new blog broke down. 
+// Fix the tests. Also write a new test  to ensure adding a blog fails with the
+// proper status code 401 Unauthorized if a token is not provided.
 
-  beforeEach(async () => {
+
+beforeEach(async () => {
     await Blog.deleteMany({})
-    let blogObject = new Blog(initialBlogs[0])
-    await blogObject.save()
-    blogObject = new Blog(initialBlogs[1])
-    await blogObject.save()
+    await Blog.insertMany(helper.initialBlogs)
   })
 
 test('all blogs are returned', async () => {
     const response = await api.get('/api/blogs')
   
-    expect(response.body).toHaveLength(initialBlogs.length)
+    expect(response.body).toHaveLength(helper.initialBlogs.length)
   })
 
 test('blogs are returned as json', async () => {
@@ -49,7 +51,7 @@ test('check if can create new blog', async ()=>{
         .expect('Content-Type', /application\/json/)
 
     const response = await api.get('/api/blogs')
-    expect(response.body).toHaveLength(initialBlogs.length + 1)
+    expect(response.body).toHaveLength(helper.initialBlogs.length + 1)
     })
 
 test('verify if like is missing', async ()=> {

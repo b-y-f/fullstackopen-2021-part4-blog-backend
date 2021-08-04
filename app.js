@@ -5,12 +5,15 @@ const middleware = require('./utils/middleware');
 const logger = require('./utils/logger');
 const mongoose = require('mongoose');
 const config = require('./utils/config');
+const loginRouter = require('./controllers/login')
 require('express-async-errors')
 
 
 app.use(cors());
 app.use(express.json());
 app.use(middleware.requestLogger);
+app.use('/api/login', loginRouter)
+
 
 mongoose.connect(config.mongoUrl,
     {useNewUrlParser: true,

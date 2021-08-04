@@ -28,3 +28,21 @@ Content-Type: application/json
     "name" : "yifan",
     "password" : "hello"
 }
+
+### User login fail
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+    "username" : "bbbbbb",
+    "password" : "hello"
+}
+
+### User login succuess
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+    "username" : "byf",
+    "password" : "hello"
+}

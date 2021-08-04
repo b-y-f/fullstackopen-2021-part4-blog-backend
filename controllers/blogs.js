@@ -16,10 +16,10 @@ blogsRouter.post('/', async(request, response, next) => {
   const user = await User.findById(body.userId)
 
   if (!body.title || !body.url){
-    response.status(400).end()
-  }else{
+    return response.status(400).end()
+  }
 
-    const blog = new Blog({
+  const blog = new Blog({
       title: body.title,
       author: body.author,
       url: body.url,
@@ -33,7 +33,7 @@ blogsRouter.post('/', async(request, response, next) => {
   await user.save()
 
   response.json(savedBlog)
-  }
+  
 
 });
 

@@ -8,15 +8,15 @@ Content-Type: application/json
     "likes":2
 }
 
-### Create new blogs
+### Create new blogs without token
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-    "title":"second blog",
-    "author":"bill",
-    "url":"jkklj.com",
-    "userId" :"610a0cca9218cc2804e07094"
+    "title":"Admin_Annocement",
+    "author":"ad",
+    "url":"www.admin.com",
+    "userId" :"610a181777927407dc267103"
 }
 
 ### Create new users
@@ -24,9 +24,9 @@ POST http://localhost:3003/api/users
 Content-Type: application/json
 
 {
-    "username" : "byf",
-    "name" : "yifan",
-    "password" : "hello"
+    "username" : "admin",
+    "name" : "bill",
+    "password" : "admin123"
 }
 
 ### User login fail

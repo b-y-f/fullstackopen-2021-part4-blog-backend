@@ -84,5 +84,10 @@ describe('total likes', () => {
     const result = listHelper.mostBlogs(blogs)
     expect(result).toStrictEqual({  author: "Robert C. Martin",blogs: 3})
   })
+
+  test('whose blog posts have the largest amount of likes', ()=>{
+    const result = listHelper.mostLikes(blogs)
+    expect(result).toStrictEqual({ author: "Edsger W. Dijkstra",likes: 17})
+  })
 });
 

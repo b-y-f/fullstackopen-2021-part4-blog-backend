@@ -2,7 +2,8 @@
 const blogsRouter = require('express').Router();
 const Blog = require('../models/blog');
 const User = require('../models/user')
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const { response } = require('express');
 
 
 // const getTokenFrom = request => {
@@ -54,8 +55,20 @@ blogsRouter.post('/', async(request, response) => {
 });
 
 blogsRouter.delete('/:id', async(req,res)=>{
-  await Blog.findByIdAndRemove(req.params.id)
-  res.status(204).end()
+
+  const decodedToken = jwt.verify(req.token, process.env.SECRET)
+
+  if (!req.token || !decodedToken.id) {
+    return response.status(401).json({ error: 'token missing or invalid' })
+  }
+
+  const blog = await Blog.findById(req.params.id)
+  if (blog.user.toString() === decodedToken.id){
+    await Blog.findByIdAndRemove(req.params.id)
+    res.status(204).end()
+  }else{
+    return res.status(400).json({ error: 'Not the same person posted'})
+  }
 
 })
 

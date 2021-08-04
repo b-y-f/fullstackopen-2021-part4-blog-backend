@@ -58,3 +58,8 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
     "url":"10s.com",
     "userId" :"610a181777927407dc267103"
 }
+
+
+### delete post without token
+DELETE http://localhost:3003/api/blogs/610a1a8d97497e1c0c588177
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOiI2MTBhMTgxNzc3OTI3NDA3ZGMyNjcxMDMiLCJpYXQiOjE2MjgwNTg0ODIsImV4cCI6MTYyODA2MjA4Mn0._eeHum-qoth0jhrhgAOu9jDBCdeOHL7E9r6SJo2J4FI

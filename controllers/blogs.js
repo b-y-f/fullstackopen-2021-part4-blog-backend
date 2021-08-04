@@ -1,8 +1,6 @@
 // eslint-disable-next-line new-cap
 const blogsRouter = require('express').Router();
 const Blog = require('../models/blog');
-const User = require('../models/user')
-const jwt = require('jsonwebtoken');
 const { response } = require('express');
 
 
@@ -23,14 +21,11 @@ blogsRouter.get('/', async(request, response) => {
 
 blogsRouter.post('/', async(request, response) => {
   const body = request.body;
+  const user = request.user
 
-  // const token = getTokenFrom(request)
-  const decodedToken = jwt.verify(request.token, process.env.SECRET)
-
-  if (!request.token || !decodedToken.id) {
+  if (!request.token || !user.id) {
     return response.status(401).json({ error: 'token missing or invalid' })
   }
-  const user = await User.findById(decodedToken.id)
 
   if (!body.title || !body.url){
     return response.status(400).end()
@@ -56,19 +51,21 @@ blogsRouter.post('/', async(request, response) => {
 
 blogsRouter.delete('/:id', async(req,res)=>{
 
-  const decodedToken = jwt.verify(req.token, process.env.SECRET)
+  const user = req.user
+  const blog = await Blog.findById(req.params.id)
 
-  if (!req.token || !decodedToken.id) {
+  if (!req.token || !user.id) {
     return response.status(401).json({ error: 'token missing or invalid' })
   }
-
-  const blog = await Blog.findById(req.params.id)
-  if (blog.user.toString() === decodedToken.id){
-    await Blog.findByIdAndRemove(req.params.id)
-    res.status(204).end()
-  }else{
+  if (!blog){
+    return res.status(400).json({ error: 'Cant find blog'})
+  }
+  if (blog.user.toString() !== user.id){
     return res.status(400).json({ error: 'Not the same person posted'})
   }
+
+  await Blog.findByIdAndRemove(req.params.id)
+    res.status(204).end()
 
 })
 

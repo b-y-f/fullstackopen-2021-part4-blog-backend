@@ -4,20 +4,8 @@ const app = require('../app')
 const api = supertest(app)
 const Blog = require('../models/blog')
 
-const initialBlogs = [
-    {
-        title: 'HTML is easy',
-        author: 'bill',
-        url: 'www.google.com',
-        likes: 2
-    },
-    {
-        title: 'HTML is hard',
-        author: 'bill_bb',
-        url: 'www.nvc.com',
-        likes:22
-    },
-  ]
+// TODO refactor tests
+
   beforeEach(async () => {
     await Blog.deleteMany({})
     let blogObject = new Blog(initialBlogs[0])

@@ -1,4 +1,4 @@
-DELETE http://localhost:3003/api/blogs/6108f80e62cef70b9cb21461
+# DELETE http://localhost:3003/api/blogs/6108f80e62cef70b9cb21461
 # Content-Type: application/json
 
 # {
@@ -8,3 +8,13 @@ DELETE http://localhost:3003/api/blogs/6108f80e62cef70b9cb21461
 #     "likes":2
 # }
 
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username" : "bili",
+    "name" : "yifan",
+    "password" : "mypasswrd"
+}
+
+# GET http://localhost:3003/api/users

@@ -1,19 +1,30 @@
-# DELETE http://localhost:3003/api/blogs/6108f80e62cef70b9cb21461
-# Content-Type: application/json
+DELETE http://localhost:3003/api/blogs/6108f80e62cef70b9cb21461
+Content-Type: application/json
 
-# {
-#     "title":"baababababababab",
-#     "author":"bill",
-#     "url":"www.google.com",
-#     "likes":2
-# }
+{
+    "title":"baababababababab",
+    "author":"bill",
+    "url":"www.google.com",
+    "likes":2
+}
 
+### Create new blogs
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+    "title":"second blog",
+    "author":"bill",
+    "url":"jkklj.com",
+    "userId" :"610a0cca9218cc2804e07094"
+}
+
+### Create new users
 POST http://localhost:3003/api/users
 Content-Type: application/json
 
 {
-    "username" : "b",
-    "name" : "yifan"
+    "username" : "byf",
+    "name" : "yifan",
+    "password" : "hello"
 }
-
-# GET http://localhost:3003/api/users

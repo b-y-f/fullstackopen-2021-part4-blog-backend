@@ -43,6 +43,18 @@ POST http://localhost:3003/api/login
 Content-Type: application/json
 
 {
-    "username" : "byf",
-    "password" : "hello"
+    "username" : "admin",
+    "password" : "admin123"
+}
+
+### Create new blogs with token
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOiI2MTBhMTgxNzc3OTI3NDA3ZGMyNjcxMDMiLCJpYXQiOjE2MjgwNTI2MjcsImV4cCI6MTYyODA1MjYzN30.COGXR4iGNRqPGXja_n1gCZCN5QYHtmsG5r2o57UwmjA
+
+{
+    "title":"TOKEN_EXPIRED!!!!",
+    "author":"exp",
+    "url":"10s.com",
+    "userId" :"610a181777927407dc267103"
 }

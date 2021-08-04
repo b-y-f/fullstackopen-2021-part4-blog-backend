@@ -79,6 +79,10 @@ describe('total likes', () => {
     const result = listHelper.totalLikes(blogs);
     expect(result).toBe(36);
   });
+
+  test('author who has the largest amount of blogs', ()=>{
+    const result = listHelper.mostBlogs(blogs)
+    expect(result).toStrictEqual({  author: "Robert C. Martin",blogs: 3})
+  })
 });
 
-// TODO 4.6 and 4.7

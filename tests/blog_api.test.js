@@ -14,6 +14,9 @@ const helper = require('./test_helper')
 beforeEach(async () => {
     await Blog.deleteMany({})
     await Blog.insertMany(helper.initialBlogs)
+
+    // register a dummy user
+    
   })
 
 test('all blogs are returned', async () => {

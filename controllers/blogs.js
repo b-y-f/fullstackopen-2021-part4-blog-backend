@@ -68,11 +68,14 @@ blogsRouter.put('/:id',async(req,res)=> {
     author: body.author,
     url: body.url,
     likes: body.likes,
-    id:req.params.id
-    // user: body.user,
+    id:req.params.id,
+    user: body.user,
   }
 
-  await Blog.findByIdAndUpdate(req.params.id, blog,{new:true})
+  let {user, ...result} = blog;
+
+
+  await Blog.findByIdAndUpdate(req.params.id, result,{new:true})
   res.json(blog)
 })
 

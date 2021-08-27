@@ -20,13 +20,13 @@ Content-Type: application/json
 }
 
 ### Create new users
-POST http://localhost:3003/api/users
+POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-    "username" : "admin",
-    "name" : "bill",
-    "password" : "admin123"
+    "username" : "123",
+    "name" : "mad aaaa",
+    "password" : "123"
 }
 
 ### User login fail

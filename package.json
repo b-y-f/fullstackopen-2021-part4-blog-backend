@@ -2,7 +2,8 @@
   "name": "fullstackopen-2021-part4-blog",
   "version": "1.0.0",
   "engines": {
-    "node": "16.7.0"
+    "node": "16.7.0",
+    "npm" : "7.21.0"
   },
   "description": "",
   "main": "index.js",

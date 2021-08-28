@@ -40,6 +40,26 @@ blogsRouter.post('/', async(request, response) => {
 
 });
 
+
+blogsRouter.post('/:id/comments', async(req,res)=>{
+  const body = req.body
+  const id = req.params.id
+
+  const oldComments = await Blog.findById(id,'comments')
+    .then(res=>res.comments)
+
+  const newComments = [...oldComments, {
+      content: body.content,
+      date: new Date()
+    }]
+  
+  const updatedBlog = await Blog
+  .findByIdAndUpdate(
+    id,{comments:newComments},{new:true})
+
+  res.json(updatedBlog)
+})
+
 blogsRouter.delete('/:id', async(req,res)=>{
 
   const user = req.user
@@ -70,9 +90,10 @@ blogsRouter.put('/:id',async(req,res)=> {
     likes: body.likes,
     id:req.params.id,
     user: body.user,
+    comments:body.comments
   }
 
-  let {user, ...result} = blog;
+  const {user, ...result} = blog;
 
 
   await Blog.findByIdAndUpdate(req.params.id, result,{new:true})
